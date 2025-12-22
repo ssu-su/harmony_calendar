@@ -65,28 +65,28 @@ interface CalendarEvent {
 本项目采用 MVVM 模式的变体，利用 ArkTS 的声明式 UI 特性实现视图与数据的绑定。
 
 ```mermaid
-graph TD
-    subgraph View Layer [视图层 (UI)]
-        IndexPage[Index.ets (主页面)]
-        MonthView[月视图组件]
-        WeekView[周视图组件]
-        DayView[日视图组件]
-        EditorDialog[日程编辑弹窗]
-        MenuDialog[功能菜单弹窗]
+flowchart TD
+    subgraph View_Layer ["视图层 (UI)"]
+        IndexPage["Index.ets (主页面)"]
+        MonthView["月视图组件"]
+        WeekView["周视图组件"]
+        DayView["日视图组件"]
+        EditorDialog["日程编辑弹窗"]
+        MenuDialog["功能菜单弹窗"]
     end
 
-    subgraph ViewModel Layer [逻辑层 (State)]
-        State[应用状态 (@State)]
-        CurrentDate[当前日期]
-        EventList[日程列表]
-        ViewMode[视图模式]
+    subgraph ViewModel_Layer ["逻辑层 (State)"]
+        State["应用状态 (@State)"]
+        CurrentDate["当前日期"]
+        EventList["日程列表"]
+        ViewMode["视图模式"]
     end
 
-    subgraph Model Layer [数据与算法层]
-        EventModel[CalendarEvent 接口]
-        LunarAlgo[农历算法 (SolarToLunar)]
-        ICSParser[ICS 解析/生成器]
-        ReminderService[提醒服务 (Timer)]
+    subgraph Model_Layer ["数据与算法层"]
+        EventModel["CalendarEvent 接口"]
+        LunarAlgo["农历算法 (SolarToLunar)"]
+        ICSParser["ICS 解析/生成器"]
+        ReminderService["提醒服务 (Timer)"]
     end
 
     IndexPage --> MonthView
@@ -101,6 +101,7 @@ graph TD
     IndexPage -- 启动 --> ReminderService
     
     ReminderService -- 轮询 --> EventList
+
 ```
 
 ---
